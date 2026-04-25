@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hiba Anub — Brand Marketing & Creative Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAFAF7;
+    --ink: #1A1612;
+    --charcoal: #2D2926;
+    --muted: #8C8580;
+    --gold: #C9A84C;
+    --gold-light: #E8D5A0;
+    --terracotta: #C4694F;
+    --sage: #7A8C7E;
+    --border: rgba(26,22,18,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(245,240,232,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 7vw, 7rem);
+    font-weight: 300;
+    line-height: 0.95;
+    color: var(--ink);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--charcoal);
+    max-width: 42ch;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--charcoal); transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.6s forwards;
+  }
+
+  .hero-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: -8px;
+    right: 8px; bottom: 8px;
+    border: 1px solid var(--gold-light);
+    z-index: -1;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .stat-item {}
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .stat-number span { color: var(--terracotta); }
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .hero-card-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .companies {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .company-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .company-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .company-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.35rem 0.8rem;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    color: var(--charcoal);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    background: var(--ink);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--gold-light);
+    white-space: nowrap;
+    padding: 0 1.5rem;
+  }
+  .marquee-dot {
+    color: var(--terracotta);
+    font-style: normal;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 6rem; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--terracotta); }
+
+  /* ── ABOUT ── */
+  .about-section {
+    background: var(--warm-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--charcoal);
+  }
+  .about-text p { margin-bottom: 1.2rem; }
+  .about-text strong { color: var(--ink); font-weight: 500; }
+
+  .skills-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .skill-group {}
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--gold-light);
+  }
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .skill-list li {
+    font-size: 0.85rem;
+    color: var(--charcoal);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .skill-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+    font-size: 0.7rem;
+  }
+
+  /* ── CAMPAIGNS ── */
+  .campaigns-section { background: var(--cream); }
+
+  .campaigns-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    margin-top: 4rem;
+    background: var(--border);
+  }
+
+  .campaign-video {
+    margin-top: 1rem;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .campaign-video video {
+    width: 100%;
+    display: block;
+    max-height: 200px;
+    object-fit: cover;
+  }
+  .campaign-video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .campaign-video-grid video {
+    width: 100%;
+    border-radius: 4px;
+    display: block;
+    max-height: 120px;
+    object-fit: cover;
+  }
+
+  .campaign-card {
+    background: var(--warm-white);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .campaign-card:hover { transform: translateY(-4px); z-index: 1; box-shadow: 0 20px 60px rgba(26,22,18,0.12); }
+
+  .campaign-card.featured {
+    grid-column: span 2;
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .campaign-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--gold-light);
+    opacity: 0.3;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+  }
+  .campaign-card.featured .campaign-number { color: var(--gold); opacity: 0.15; }
+
+  .campaign-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--gold);
+  }
+  .campaign-card.featured .campaign-tag {
+    color: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  .campaign-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+  .campaign-card.featured .campaign-title { color: var(--cream); font-size: 2.4rem; }
+
+  .campaign-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .campaign-card.featured .campaign-desc { color: rgba(245,240,232,0.65); }
+
+  .campaign-result {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: var(--terracotta);
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .campaign-card.featured .campaign-result {
+    color: var(--gold-light);
+    border-color: rgba(245,240,232,0.15);
+  }
+
+  .campaign-videos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 1.2rem;
+  }
+  .video-container {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--charcoal);
+  }
+  .video-container video {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+    height: 120px;
+  }
+  .video-container:hover video {
+    transform: scale(1.05);
+  }
+  .video-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem;
+    background: linear-gradient(transparent, rgba(26,22,18,0.95));
+    color: var(--cream);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .video-overlay span {
+    opacity: 0.7;
+    font-size: 0.5rem;
+  }
+  .video-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    background: rgba(245,240,232,0.85);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-play-icon::after {
+    content: '';
+    border-style: solid;
+    border-width: 5px 0 5px 8px;
+    border-color: transparent transparent transparent var(--ink);
+    margin-left: 2px;
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience-section {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .experience-section .section-title { color: var(--cream); }
+
+  .exp-timeline {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(245,240,232,0.1);
+    position: relative;
+  }
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-meta {}
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .exp-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+  .exp-location {
+    font-size: 0.72rem;
+    color: rgba(245,240,232,0.4);
+    margin-top: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+
+  .exp-content {}
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+  }
+  .exp-role em { font-style: italic; color: var(--gold-light); }
+
+  .exp-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .exp-highlights li {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: rgba(245,240,232,0.65);
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .exp-highlights li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--cream);
+    text-align: center;
+    padding: 8rem 6rem;
+  }
+
+  .contact-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .contact-big em { font-style: italic; color: var(--terracotta); }
+
+  .contact-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    max-width: 50ch;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  .contact-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.8rem;
+    border: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--charcoal);
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .contact-chip:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  .availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.4rem;
+    background: rgba(122,140,126,0.12);
+    border: 1px solid var(--sage);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+  .availability-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 6rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--muted);
+  }
+  .footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 2rem 3rem; }
+    .hero-right { padding: 2rem; }
+    section { padding: 5rem 2rem; }
+    .about-section { grid-template-columns: 1fr; gap: 3rem; }
+    .campaigns-grid { grid-template-columns: 1fr; }
+    .campaign-card.featured { grid-column: span 1; }
+    .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+    .contact-section { padding: 5rem 2rem; }
+    footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    .skills-columns { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Hiba Anub</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#campaigns">Campaigns</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Brand Marketing · Creative Strategy · Marketing Operations</p>
+    <h1 class="hero-name">Hiba<br><em>Anub</em></h1>
+    <p class="hero-tagline">I don't just run campaigns — I build brand systems that scale. Four years across Goldman Sachs, Tesco PLC, and TerraPay, working in GCC, MENA, APAC, UK, and Central Europe.</p>
+    <div class="hero-cta">
+      <a href="#campaigns" class="btn-primary">View My Work</a>
+      <a href="mailto:hibaanub99@gmail.com" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="4">0<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="5">0</div>
+          <div class="stat-label">Global Markets</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500">0<span>+</span></div>
+          <div class="stat-label">Campaign Engagements</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="3">0<span>x</span></div>
+          <div class="stat-label">B2B Pipeline Growth</div>
+        </div>
+      </div>
+      <hr class="hero-card-divider">
+      <div class="companies">
+        <div class="company-label">Worked With</div>
+        <div class="company-list">
+          <span class="company-tag">Goldman Sachs</span>
+          <span class="company-tag">Tesco PLC</span>
+          <span class="company-tag">TerraPay</span>
+          <span class="company-tag">Impresario</span>
+          <span class="company-tag">Visa</span>
+          <span class="company-tag">Airtel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Brand Strategy <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Campaign Ideation <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Marketing Operations <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">B2B Growth <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Creative Direction <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Multi-Market Localisation <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Stakeholder Communications <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Lead Generation <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Brand Strategy <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Campaign Ideation <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Marketing Operations <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">B2B Growth <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Creative Direction <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Multi-Market Localisation <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Stakeholder Communications <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Lead Generation <span class="marquee-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section reveal" id="about">
+  <div>
+    <div class="section-label">About</div>
+    <h2 class="section-title">I turn brand ideas into <em>measurable</em> results</h2>
+    <div class="about-text">
+      <p>With 4+ years across <strong>Goldman Sachs, Tesco PLC, and TerraPay</strong>, I've operated at the intersection of creative strategy and marketing operations — building campaigns from zero, restructuring workflows for global teams, and pitching ideas that reach board level.</p>
+      <p>I've worked across <strong>GCC, MENA, APAC, UK, and Central Europe</strong>, which means I don't just market — I localise, adapt, and lead. I speak English, French, and Arabic, which gives me a genuine cultural edge in the markets I serve.</p>
+      <p>Currently pursuing a <strong>Postgraduate Programme in Strategic Brand Management</strong> at MICA — India's top communications institute — and available for immediate hire in Dubai.</p>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Core Skills</div>
+    <div class="skills-columns">
+      <div class="skill-group">
+        <div class="skill-group-title">Creative</div>
+        <ul class="skill-list">
+          <li>Campaign Ideation</li>
+          <li>Brand Storytelling</li>
+          <li>Creative Strategy</li>
+          <li>Tone of Voice</li>
+          <li>Content Strategy</li>
+          <li>Copywriting</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Marketing</div>
+        <ul class="skill-list">
+          <li>Integrated Comms</li>
+          <li>GTM Strategy</li>
+          <li>B2B & B2C</li>
+          <li>Lead Generation</li>
+          <li>Email Marketing</li>
+          <li>Audience Segmentation</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Operations</div>
+        <ul class="skill-list">
+          <li>HubSpot CRM</li>
+          <li>KPI Dashboards</li>
+          <li>Workflow Design</li>
+          <li>QA Validation</li>
+          <li>Google Analytics 4</li>
+          <li>Meta Ads Manager</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Events</div>
+        <ul class="skill-list">
+          <li>Trade Show Planning</li>
+          <li>C-Suite Events</li>
+          <li>Multi-Vendor Coord.</li>
+          <li>Brand Activations</li>
+          <li>Client Experience</li>
+          <li>Investor Relations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGNS -->
+<section class="campaigns-section reveal" id="campaigns">
+  <div class="section-label">Selected Work</div>
+  <h2 class="section-title">Campaigns & <em>Impact</em></h2>
+
+  <div class="campaigns-grid">
+
+    <div class="campaign-card featured">
+      <div class="campaign-number">01</div>
+      <span class="campaign-tag">TerraPay · Fintech · MENA</span>
+      <h3 class="campaign-title">Visa × TerraPay Partnership Launch</h3>
+      <p class="campaign-desc">Conceptualised and executed the full partnership campaign end-to-end — blog publication, image curation, video production liaison, vendor coordination, and branded merchandise. The content was officially reshared by Visa's own team, amplifying reach across MENA institutional audiences.</p>
+      <div class="campaign-result">✦ 500+ LinkedIn engagements · Officially reshared by Visa</div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-number">02</div>
+      <span class="campaign-tag">TerraPay · Partnership Launch</span>
+      <h3 class="campaign-title">30M Mobile Wallet Partnership</h3>
+      <p class="campaign-desc">Announced partnership empowering over 30 million mobile wallet holders to make cross-border payments under #PaymentsBeyondBoundaries.</p>
+      <div class="campaign-videos" style="grid-template-columns: 1fr;">
+        <div class="video-container">
+          <video src="videos/TerraPay.mp4" autoplay muted loop playsinline></video>
+          <div class="video-overlay">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7014120416478683136" target="_blank" class="video-source">Source: LinkedIn @TerraPay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-number">03</div>
+      <span class="campaign-tag">TerraPay · Year in Review</span>
+      <h3 class="campaign-title">TerraPay 2022 Highlights</h3>
+      <p class="campaign-desc">Year-end video retrospective showcasing 2022 achievements, growth, new partnerships, and team expansion.</p>
+      <div class="campaign-videos" style="grid-template-columns: 1fr;">
+        <div class="video-container">
+          <video src="videos/TerraPay again huh.mp4" autoplay muted loop playsinline></video>
+          <div class="video-overlay">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7032232591864807424" target="_blank" class="video-source">Source: LinkedIn @TerraPay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-number">04</div>
+      <span class="campaign-tag">TerraPay · Morocco</span>
+      <h3 class="campaign-title">Attijariwafa Bank Partnership</h3>
+      <p class="campaign-desc">Partnership with Attijariwafa Bank celebrating TerraPay's expansion into Morocco — the third-largest remittance recipient in Africa.</p>
+      <div class="campaign-videos" style="grid-template-columns: 1fr;">
+        <div class="video-container">
+          <video src="videos/Terrapay Morocco again.mp4" autoplay muted loop playsinline></video>
+          <div class="video-overlay">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7079710386823794688" target="_blank" class="video-source">Source: LinkedIn @TerraPay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-number">05</div>
+      <span class="campaign-tag">TerraPay · Event</span>
+      <h3 class="campaign-title">Seamless DXB 2023</h3>
+      <p class="campaign-desc">Highlight video from Seamless DXB 2023 fintech conference in Dubai — team engaging in industry discussions and networking.</p>
+      <div class="campaign-videos" style="grid-template-columns: 1fr;">
+        <div class="video-container">
+          <video src="videos/Another Terrapay.mp4" autoplay muted loop playsinline></video>
+          <div class="video-overlay">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7087016887426924544" target="_blank" class="video-source">Source: LinkedIn @TerraPay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-number">06</div>
+      <span class="campaign-tag">Creative Direction</span>
+      <h3 class="campaign-title">Red Bull Creative Campaign</h3>
+      <p class="campaign-desc">Brand activation and creative direction work for Red Bull — capturing the energy and spirit of the brand.</p>
+      <div class="campaign-videos" style="grid-template-columns: 1fr;">
+        <div class="video-container">
+          <video src="videos/Redbull.mp4" autoplay muted loop playsinline></video>
+          <div class="video-overlay">
+            <a href="https://www.linkedin.com/in/hiba-a-139392204" target="_blank" class="video-source">Source: LinkedIn @HibaAnub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-number">07</div>
+      <span class="campaign-tag">Tesco PLC · UK & Europe</span>
+      <h3 class="campaign-title">Board-Level Creative Pitch</h3>
+      <p class="campaign-desc">Independently developed a dual-incentive referral programme and product launch strategy. Endorsed by line manager, escalated to Senior Management, then shared with board-level stakeholders at Tesco PLC. Currently under budget review.</p>
+      <div class="campaign-result">✦ Reached board level · Under budget review</div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-number">08</div>
+      <span class="campaign-tag">TerraPay · 5 Global Summits</span>
+      <h3 class="campaign-title">Always-On Event Landing Page</h3>
+      <p class="campaign-desc">Proposed and built a unified event landing page replacing individual per-event builds — a single always-on hub that continues generating leads across 5 global fintech conferences. Still live and operating today.</p>
+      <div class="campaign-result">✦ 100+ qualified leads per summit · Still live today</div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-number">09</div>
+      <span class="campaign-tag">Tesco PLC · 100–400/month</span>
+      <h3 class="campaign-title">Promotional Campaign Operations at Scale</h3>
+      <p class="campaign-desc">Governed end-to-end planning, QA validation, and activation of 100–400 promotional coupons per month across Tesco.com and in-store. Achieved 100% on-time publication and contributed to measurable reduction in coupon fraud.</p>
+      <div class="campaign-result">✦ 100% on-time · Reduced coupon fraud</div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-number">10</div>
+      <span class="campaign-tag">TerraPay · MENA Growth</span>
+      <h3 class="campaign-title">HubSpot CRM & B2B Pipeline Build</h3>
+      <p class="campaign-desc">Implemented HubSpot CRM and automated nurture workflows from zero — tripling lead nurture touchpoints and expanding the qualified institutional pipeline to 200+ contacts across the MENA region.</p>
+      <div class="campaign-result">✦ 3x pipeline growth · 200+ contacts</div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-number">11</div>
+      <span class="campaign-tag">Goldman Sachs · APAC</span>
+      <h3 class="campaign-title">C-Suite Investor Roadshows</h3>
+      <p class="campaign-desc">Directed corporate brand identity and institutional communications across 12+ C-suite roadshows and investor conferences in Australia and Hong Kong — serving 20–50+ institutional clients per event with zero escalations.</p>
+      <div class="campaign-result">✦ 12+ events · Zero escalations · 50+ clients/event</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section reveal" id="experience">
+  <div class="section-label">Career</div>
+  <h2 class="section-title" style="color:var(--cream)">Where I've <em>Built</em></h2>
+
+  <div class="exp-timeline">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Jul 2024 – Oct 2025</div>
+        <div class="exp-company">Tesco PLC</div>
+        <div class="exp-location">Bengaluru · UK & Central Europe</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Brand Marketing & Operations <em>Senior Associate</em></div>
+        <ul class="exp-highlights">
+          <li>Oversaw 100–400 campaign go-lives monthly with 100% on-time activation</li>
+          <li>Presented creative strategy independently to board-level stakeholders</li>
+          <li>Restructured IWT task management system for an 11-person team</li>
+          <li>Rebuilt 80+ GTM workflows in ARIS across two international markets</li>
+          <li>Designed KPI dashboards that directly influenced budget reallocation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Nov 2023 – Mar 2024</div>
+        <div class="exp-company">Goldman Sachs</div>
+        <div class="exp-location">Bengaluru · APAC Coverage</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Corporate Communications & Events <em>Analyst</em></div>
+        <ul class="exp-highlights">
+          <li>Directed 12+ investor events across Australia and Hong Kong</li>
+          <li>Unified brand voice across 4 internal divisions — IB, Research, Global Sales, Events</li>
+          <li>Served 20–50+ institutional clients per event with zero escalations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Sep 2022 – Aug 2023</div>
+        <div class="exp-company">TerraPay</div>
+        <div class="exp-location">Bengaluru · GCC, MENA & APAC</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Brand Marketing <em>Associate</em></div>
+        <ul class="exp-highlights">
+          <li>Architected landing page generating 100+ leads per global summit — still live today</li>
+          <li>Spearheaded Visa × TerraPay campaign to 500+ engagements + Visa reshare</li>
+          <li>Built B2B content function from zero: whitepapers, Forbes thought leadership, video</li>
+          <li>Pioneered culture-led event gifting programme across 5 global regions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-period">Nov 2021 – Aug 2022</div>
+        <div class="exp-company">Impresario Events</div>
+        <div class="exp-location">Kochi, India</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Brand Activations & Client Services <em>Executive</em></div>
+        <ul class="exp-highlights">
+          <li>Produced 25+ large-scale brand activations including Miss Kerala 2021</li>
+          <li>Directed end-to-end client experience across multi-day events</li>
+          <li>100% on-time completion across all productions</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section reveal" id="contact">
+  <div class="availability-badge">
+    <span class="availability-dot"></span>
+    Available Immediately · Dubai, UAE
+  </div>
+  <br><br>
+  <h2 class="contact-big">Let's build something<br><em>remarkable</em> together</h2>
+  <p class="contact-sub">I'm currently open to brand marketing, creative strategy, and marketing operations roles across FMCG, Fintech, Financial Services, Luxury, and Retail.</p>
+  <div class="contact-links">
+    <a href="mailto:hibaanub99@gmail.com" class="contact-chip">✉ hibaanub99@gmail.com</a>
+    <a href="tel:+971508279729" class="contact-chip">📞 +971 508 279 729</a>
+    <a href="https://linkedin.com/in/hiba-a-139392204" target="_blank" class="contact-chip">in LinkedIn</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Hiba Anub</span>
+  <span class="footer-note">Brand Marketing · Dubai, UAE · Available Now</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Number count-up animation on page load
+  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+
+  function animateCounters() {
+    statNumbers.forEach(stat => {
+      const target = parseInt(stat.dataset.target);
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+
+      const updateCount = () => {
+        current += step;
+        if (current < target) {
+          stat.firstChild.textContent = Math.floor(current);
+          requestAnimationFrame(updateCount);
+        } else {
+          stat.firstChild.textContent = target;
+        }
+      };
+      updateCount();
+    });
+  }
+
+  // Start animation 500ms after page load
+  setTimeout(animateCounters, 1000);
+</script>
+
+</body>
+</html>
